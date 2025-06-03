@@ -39,7 +39,7 @@ public class EventService(DataContext context, HttpClient httpClient)
         {
             throw new KeyNotFoundException($"Event with ID {id} not found.");
         }
-        var response = await _httpClient.GetAsync($"https://localhost:7047/api/ticket/geteventtickets/{id}");
+        var response = await _httpClient.GetAsync($"https://ventixe-ticket-ecu-bpbqcchqddg6ath9.swedencentral-01.azurewebsites.net/api/ticket/geteventtickets/{id}");
         if (!response.IsSuccessStatusCode)
         {
             throw new HttpRequestException($"Failed to retrieve tickets for event with ID {id}");

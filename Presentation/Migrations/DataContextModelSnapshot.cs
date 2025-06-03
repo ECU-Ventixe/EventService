@@ -65,7 +65,7 @@ namespace Presentation.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Events");
+                    b.ToTable("Events", (string)null);
                 });
 #pragma warning restore 612, 618
         }
