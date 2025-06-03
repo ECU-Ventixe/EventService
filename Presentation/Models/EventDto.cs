@@ -11,5 +11,7 @@ public class EventDto
     public DateTime EventStartDate { get; set; }
     public DateTime EventEndDate { get; set; }
     public DateTime TicketStartDate { get; set; }
+    public int TicketAmount { get; set; }
+    public decimal Price { get; set; }
 
 }

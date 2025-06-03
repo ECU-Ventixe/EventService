@@ -1,4 +1,7 @@
-﻿namespace Presentation.Data;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Presentation.Data;
 
 public class EventEntity
 {
@@ -12,5 +15,9 @@ public class EventEntity
     public DateTime EventStartDate { get; set; }
     public DateTime EventEndDate { get; set; }
     public DateTime TicketStartDate { get; set; }
+    public int TicketAmount { get; set; }
+
+    [Column(TypeName = "decimal(6,2)")]
+    public decimal Price { get; set; }
 
 }

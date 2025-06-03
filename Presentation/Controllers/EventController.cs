@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Presentation.Data;
 using Presentation.Models;
 using Presentation.Service;
+using System.ComponentModel;
 
 namespace Presentation.Controllers
 {
@@ -29,10 +30,15 @@ namespace Presentation.Controllers
                 State = eventDto.State,
                 EventStartDate = eventDto.EventStartDate,
                 EventEndDate = eventDto.EventEndDate,
-                TicketStartDate = eventDto.TicketStartDate
+                TicketStartDate = eventDto.TicketStartDate,
+                TicketAmount = eventDto.TicketAmount,
+                Price = eventDto.Price
             };
-            // Assuming you have a service to handle the creation of events
+
+
+
             var createdEvent = await _eventService.CreateEvent(entity);
+
             return Ok(createdEvent);
         }
 
@@ -41,6 +47,16 @@ namespace Presentation.Controllers
         {
             var events = await _eventService.GetAllEvents();
             return Ok(events);
+        }
+        [HttpGet("getevent/{id}")]
+        public async Task<IActionResult> GetEventById(string id)
+        {
+            var eventEntity = await _eventService.GetEventById(id);
+            if (eventEntity == null)
+            {
+                return NotFound($"Event with ID {id} not found.");
+            }
+            return Ok(eventEntity);
         }
     }
 }
